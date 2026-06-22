@@ -71,5 +71,12 @@ function signin() {
             icon: "success"
         });
     }
+    else{
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Credentials  !",
+            text: "Please Write a valid Email Address!",
+        });
+    }
 
 }
