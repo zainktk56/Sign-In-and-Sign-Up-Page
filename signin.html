@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<main>
+
+    <div>
+        <div class="main">
+            <h1>Welcome Back</h1>
+            <hr>
+            <br>
+            <p> Sign in to your account.</p>
+            <br>
+            <div class="inputs">
+                <!-- Removed Name field; kept Email and Password -->
+                <input type="email" name="email" id="temail" placeholder="Enter Your Email" required>
+                <input type="password" name="password" id="tpass" placeholder="Enter Your Password" required>
+            </div>
+            <br>
+            <div class="already_acc">
+                <!-- Changed text to link back to signup.html -->
+                <p>Don't have an Account? <a href="./signup.html">Register</a></p>
+            </div>
+            <br>
+            <div class="signup_btn">
+                <!-- Updated onclick function name for login logic -->
+                <button onclick="signin()" class="btn">Sign In</button>
+            </div>
+        </div>
+    </div>
+    
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./app.js"></script>
+</body>
+
+</html>

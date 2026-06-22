@@ -1,0 +1,710 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(./Poppins/Poppins-Regular.ttf);
+}
+
+body {
+    font-family: poppins;
+    background-image: url(./Images/BG\ IMG.jpg);
+
+    /* Prevents the image from repeating like a grid */
+    background-repeat: no-repeat;
+
+    /* Centers the image perfectly on the screen */
+    background-position: center;
+
+    /* Forces the image to scale nicely and cover the entire viewport */
+    background-size: cover;
+
+    /* Keeps the background fixed in place while scrolling */
+    background-attachment: fixed;
+
+    color: white;
+}
+
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 300px;
+    background-color: rgba(248, 249, 249, 0.116);
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 40px;
+    border-radius: 15px;
+    /* height: 300px; */
+}
+
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin-left: 60px;
+}
+
+input {
+    margin: 5px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-family: poppins;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+input:focus {
+    text-overflow: clip;
+}
+
+/* From Uiverse.io by kleenpulse */
+.btn {
+    --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+    --border-width: 0.125em;
+    --curve-size: 0.5em;
+    --blur: 30px;
+    --bg: #080312;
+    --color: #afffff;
+    color: var(--color);
+    cursor: pointer;
+    /* use position: relative; so that BG is only for .btn */
+    position: relative;
+    isolation: isolate;
+    display: inline-grid;
+    place-content: center;
+    padding: 4px 12px;
+    font-family: poppins;
+    font-size: 17px;
+    border: 0;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    clip-path: polygon(
+            /* Top-left */
+            0% var(--curve-size),
+            var(--curve-size) 0,
+            /* top-right */
+            100% 0,
+            100% calc(100% - var(--curve-size)),
+            /* bottom-right 1 */
+            calc(100% - var(--curve-size)) 100%,
+            /* bottom-right 2 */
+            0 100%);
+    transition: color 250ms;
+}
+
+.btn::after,
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.btn::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: move-bg7234 5s ease infinite;
+    z-index: -2;
+}
+
+@keyframes move-bg7234 {
+    0% {
+        background-position: 31% 0%;
+    }
+
+    50% {
+        background-position: 70% 100%;
+    }
+
+    100% {
+        background-position: 31% 0%;
+    }
+}
+
+.btn::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(
+            /* Top-left */
+            var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+            calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+            /* top-right */
+            calc(100% - var(--border-width)) var(--border-width),
+            calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+            /* bottom-right 1 */
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+            /* bottom-right 2 */
+            var(--border-width) calc(100% - var(--border-width)));
+    transition: clip-path 500ms;
+}
+
+.btn:where(:hover, :focus)::after {
+    clip-path: polygon(
+            /* Top-left */
+            calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+            calc(100% - var(--border-width)) var(--border-width),
+            /* top-right */
+            calc(100% - var(--border-width)) var(--border-width),
+            calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+            /* bottom-right 1 */
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+            /* bottom-right 2 */
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)));
+    transition: 200ms;
+}
+
+.btn:where(:hover, :focus) {
+    color: #fff;
+}
+
+
+/* Sign in page css */
+
+/* Reset default browser margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes width/padding calculation easier */
+}
+
+/* Base Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Web safe fallback fonts */
+    background-image: url('./Images/BG\ IMG.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    
+    /* Centers the main card on the screen cleanly without heavy margins */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}
+
+/* Glassmorphism Main Container Box */
+.main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 380px; /* Slightly wider so input containers fit nicely */
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+    backdrop-filter: blur(10px); /* Creates a soft glass blur effect */
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Soft glass edge border */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Fields Container */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Creates clean even spacing between text fields */
+    margin: 20px 0;
+    width: 100%;
+}
+
+/* Text Input Fields styling */
+input {
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.4); /* Darkened input fields for readability */
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease; /* Smooth glow transition on click */
+}
+
+/* Highlight input field when clicked/focused */
+input:focus {
+    border-color: #ffae00; 
+}
+
+/* Custom Placeholder styling */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Already have an account link area */
+.already_acc p {
+    font-size: 14px;
+    color: #dddddd;
+}
+
+.already_acc a {
+    color: #ffae00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.already_acc a:hover {
+    text-decoration: underline;
+}
+
+/* Simplified Beginner-Friendly Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    
+    /* Simple, clean gradient coloring */
+    background: linear-gradient(45deg, #ffae00, #7e03aa); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Adds a smooth transition effect when hovering over the button */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Button Hover State */
+.btn:hover {
+    filter: brightness(1.2); /* Brightens the gradient color slightly */
+    transform: translateY(-2px); /* Makes the button subtly lift up */
+}
+
+/* Button Click/Active State */
+.btn:active {
+    transform: translateY(0px); /* Drops back down when pushed */
+}
+
+
+
+
+/* Responsive code  */
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Makes width/padding consistent */
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(./Poppins/Poppins-Regular.ttf);
+}
+
+body {
+    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(./Images/BG\ IMG.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+
+    /* ==== FLEX CENTERING (makes card responsive on all screens) ==== */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;            /* Prevents card from touching edges on small screens */
+}
+
+/* ===== GLASS CARD (shared for both pages) ===== */
+.main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;              /* ← Fluid width, key for responsiveness */
+    max-width: 380px;         /* Default comfortable size for mobile/tablet */
+    background-color: rgba(248, 249, 249, 0.116);
+    padding: 40px 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: padding 0.2s, max-width 0.2s;
+}
+
+/* ===== INPUTS CONTAINER ===== */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;                /* Consistent spacing between fields */
+    width: 100% !important;   /* Override inline width:50% + margin-left:60px */
+    margin-left: 0 !important;
+    margin-right: 0;
+}
+
+/* ===== TEXT INPUTS ===== */
+input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-family: poppins, sans-serif;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+input:focus {
+    text-overflow: clip;
+    border: 1px solid #ffae00;
+    box-shadow: 0 0 0 3px rgba(255, 174, 0, 0.25);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* ============================================================
+   ORIGINAL SIGNUP BUTTON (complex animated style)
+   Kept exactly as you defined it.
+   ============================================================ */
+.btn {
+    --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+    --border-width: 0.125em;
+    --curve-size: 0.5em;
+    --blur: 30px;
+    --bg: #080312;
+    --color: #afffff;
+    color: var(--color);
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+    display: inline-grid;
+    place-content: center;
+    padding: 14px 20px;
+    font-family: poppins, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 0;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    clip-path: polygon(
+        0% var(--curve-size),
+        var(--curve-size) 0,
+        100% 0,
+        100% calc(100% - var(--curve-size)),
+        calc(100% - var(--curve-size)) 100%,
+        0 100%
+    );
+    transition: color 250ms;
+    width: 100%;              /* ← Full width inside card */
+    min-height: 54px;
+    letter-spacing: 1px;
+    background: transparent;
+}
+
+.btn::after,
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.btn::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: move-bg7234 5s ease infinite;
+    z-index: -2;
+}
+
+@keyframes move-bg7234 {
+    0% { background-position: 31% 0%; }
+    50% { background-position: 70% 100%; }
+    100% { background-position: 31% 0%; }
+}
+
+.btn::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(
+        var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+        calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+        calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+        var(--border-width) calc(100% - var(--border-width))
+    );
+    transition: clip-path 500ms;
+}
+
+.btn:where(:hover, :focus)::after {
+    clip-path: polygon(
+        calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+        calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+        calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width))
+    );
+    transition: 200ms;
+}
+
+.btn:where(:hover, :focus) {
+    color: #fff;
+}
+
+/* ============================================================
+   ORIGINAL SIGNIN BUTTON (simple gradient style)
+   This overrides the complex button for the signin page,
+   exactly as you had in your original CSS.
+   ============================================================ */
+/* We keep the same .btn class but redefine it here.
+   Since this comes later in the file, it applies to both pages
+   unless overridden by specific parent selectors.
+   To preserve BOTH designs without changing HTML, we use the parent
+   context of the signin page (the presence of #temail or #tpass).
+   BUT since you said "don't change the code", we keep the override
+   as-is, meaning the signup page will also get this simpler button.
+   (This matches the behavior of your original combined CSS file). */
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #ffae00, #7e03aa);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, filter 0.2s ease;
+    min-height: 48px;
+}
+
+.btn:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0px);
+}
+
+/* ===== LINKS ===== */
+.already_acc p {
+    font-size: 14px;
+    color: #dddddd;
+    margin: 0;
+}
+
+.already_acc a {
+    color: #ffae00;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.already_acc a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   RESPONSIVE FIXES
+   ============================================================ */
+
+/* --- Tablets & small laptops --- */
+@media (max-width: 768px) {
+    .main {
+        max-width: 400px;
+        padding: 32px 24px;
+        border-radius: 18px;
+    }
+
+    .main h1 {
+        font-size: 1.8rem;
+    }
+
+    input {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 15px;
+        padding: 12px 16px;
+        min-height: 50px;
+    }
+}
+
+/* --- Phones (portrait) --- */
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .main {
+        max-width: 100%;
+        padding: 28px 18px;
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .main h1 {
+        font-size: 1.6rem;
+    }
+
+    .main p {
+        font-size: 0.9rem;
+    }
+
+    .inputs {
+        gap: 12px;
+    }
+
+    input {
+        padding: 10px 14px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 12px 14px;
+        min-height: 48px;
+        border-radius: 8px;   /* Keep consistent with signin style */
+    }
+
+    .already_acc p {
+        font-size: 13px;
+    }
+
+    .main hr {
+        width: 50px;
+    }
+
+    .signup_btn {
+        margin-top: 4px;
+    }
+}
+
+/* --- Very small phones (<= 360px) --- */
+@media (max-width: 380px) {
+    .main {
+        padding: 20px 14px;
+        border-radius: 14px;
+    }
+
+    .main h1 {
+        font-size: 1.4rem;
+    }
+
+    .main p {
+        font-size: 0.8rem;
+    }
+
+    input {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 10px 12px;
+        min-height: 42px;
+    }
+
+    .already_acc p {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   FIX FOR 1300px+ SCREENS (makes it bigger, not too small)
+   ============================================================ */
+@media (min-width: 1300px) {
+    body {
+        padding: 40px;        /* More breathing room around the card */
+    }
+
+    .main {
+        max-width: 600px;     /* Much wider for large monitors */
+        padding: 56px 48px;
+        border-radius: 24px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .main h1 {
+        font-size: 2.6rem;
+    }
+
+    .main p {
+        font-size: 1.1rem;
+    }
+
+    .inputs {
+        gap: 18px;
+    }
+
+    input {
+        padding: 16px 22px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 16px 28px;
+        min-height: 68px;
+        border-radius: 10px;  /* For signin style */
+    }
+
+    .already_acc p {
+        font-size: 1rem;
+    }
+
+    .main hr {
+        width: 70px;
+        margin: 0.8rem auto;
+    }
+}
+
+/* --- Extra large screens (4K, etc.) --- */
+@media (min-width: 1900px) {
+    .main {
+        max-width: 720px;
+        padding: 64px 56px;
+    }
+
+    .main h1 {
+        font-size: 3rem;
+    }
+
+    input {
+        padding: 20px 26px;
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        font-size: 1.4rem;
+        padding: 20px 32px;
+        min-height: 76px;
+    }
+}
+
+/* ===== UTILITY: keep signup button wrapper full width ===== */
+.signup_btn {
+    width: 100%;
+}
